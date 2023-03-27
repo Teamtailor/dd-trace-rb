@@ -54,7 +54,7 @@ module Datadog
 
               begin
                 # We repeat this in both start and at finish because the resource may have changed during the request
-                trace.resource = span.resource
+                trace.resource = span.resource unless exception_controller?(payload)
 
                 # Set analytics sample rate
                 Utils.set_analytics_sample_rate(span)
